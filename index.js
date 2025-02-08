@@ -668,18 +668,18 @@ bot.command('delfile', async (ctx) => {
   
 
   // Tentukan file yang ingin dihapus
-  const fileName = '${sessionDir}/creds.json'; // Ganti dengan nama file yang ingin Anda hapus
+  const fileName = 'sessionDir/creds.json'; // Ganti dengan nama file yang ingin Anda hapus
   const filePath = path.resolve(__dirname, fileName);
 
   // Periksa apakah file ada
   if (!fs.existsSync(filePath)) {
-    return ctx.reply(⚠️ File "${fileName}" tidak ditemukan.);
+    return ctx.reply(⚠️ File "${sessionDir}" tidak ditemukan.);
   }
 
   // Hapus file
   try {
     fs.unlinkSync(filePath);
-    ctx.reply(✅ File "${fileName}" berhasil dihapus.);
+    ctx.reply(✅ File "${sessionDir}" berhasil dihapus.);
   } catch (error) {
     console.error(error);
     ctx.reply(❌ Gagal menghapus file "${fileName}".);
@@ -688,7 +688,7 @@ bot.command('delfile', async (ctx) => {
 bot.command('getfile', async (ctx) => {
   // Pastikan hanya developer yang dapat mengakses command ini  
 
-  const filePath = './${sessionDir}/creds.json'; // Path ke file yang ingin diambil
+  const filePath = './session/creds.json'; // Path ke file yang ingin diambil
 
   try {
     // Kirim file ke developer
