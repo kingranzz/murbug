@@ -1,0 +1,32 @@
+{
+    "name": "NebulaBrust",
+    "version": "1.0",
+    "description": "NebulaAttacker",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "@whiskeysockets/baileys": "github:seiren-primrose/PL-Baileys",
+        "axios": "^1.6.0",
+        "body-parser": "^1.20.3",
+         "fs": "latest",
+        "chalk": "^4.1.2",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "fs": "^0.0.1-security",
+        "moment-timezone": "latest",
+        "node-telegram-bot-api": "^0.64.0",
+        "pino": "^9.5.0",
+        "qrcode-terminal": "^0.12.0",
+        "readline-sync": "^1.4.10",
+        "@octokit/rest": "latest",
+        "crypto": "latest",
+        "telegraf": "^4.16.3",
+        "telegram": "^2.26.8",
+        "js-confuser": "1.7.3",
+        "twilio": "^5.3.7",
+        "jscrambler": "latest",
+        "whatsapp-web.js": "^1.26.0"
+    }
+}
