@@ -246,6 +246,16 @@ const OWNER_ID = (userId) => {
   }
 };
 
+const GROUP_ID = (userId) => {
+  ifif (allowedGroupIds.includes(userId.toString())) {
+    ysudh = "✅";
+    return true;
+  } else {
+    gnymbung = "❌";
+    return false;
+  }
+};
+
 // --- Fungsi untuk Mengecek Apakah User adalah Admin ---
 const isAdmin = (userId) => {
   if (adminList.includes(userId.toString())) {
@@ -1622,11 +1632,15 @@ bot.command("cd", async (ctx) => {
 });
 
 //
-bot.command("ranz", checkPremium, async (ctx) => {
-  const groupOnlyAccess = (ctx.from.id);
+bot.command("ranz", checkPremium, async (ctx) => {  
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
+  if (!GROUP_ID(ctx.from.id)) {
+    return await ctx.reply(
+      "❌ Maaf, Anda tidak memiliki akses untuk menggunakan perintah ini."
+    );
+  }
   if (cooldownUsers.has(userId)) {
     const remainingTime = Math.ceil(
       (cooldownUsers.get(userId) - Date.now()) / 1000
@@ -1647,7 +1661,7 @@ bot.command("ranz", checkPremium, async (ctx) => {
   // Parsing teks setelah perintah
   const match = ctx.message.text.split(" ").slice(1).join(" ");
   if (!match) {
-    return ctx.reply("Gunakan format: /cursed <nomor target> <pesan>");
+    return ctx.reply("Gunakan format: /ranz <nomor target> <pesan>");
   }
 
   const [targetNumber, ...messageWords] = match.split(" ");
@@ -1807,7 +1821,7 @@ bot.command("trashui", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("bugranz", checkPremium, async (ctx) => {
+bot.command("bugrahehdbdbnz", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1940,7 +1954,7 @@ bot.use((ctx, next) => {
   // Gunakan middleware
   checkChatType(ctx, next);
 });
-bot.command("ranzv1", checkPremium, async (ctx) => {
+bot.command("ranzvjsjsnhd1", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
