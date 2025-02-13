@@ -433,7 +433,7 @@ const checkPremium = async (ctx, next) => {
     await next();
   } else {
     await ctx.reply(
-      "❌ Maaf, Anda bukan user premium. Silakan hubungi developer @TheyFreak untuk upgrade."
+      "❌ Maaf, Anda bukan user premium. Silakan hubungi developer @abee1945 untuk upgrade."
     );
   }
 };
@@ -1623,6 +1623,7 @@ bot.command("cd", async (ctx) => {
 
 //
 bot.command("ranz", checkPremium, async (ctx) => {
+  const groupOnlyAccess = (ctx.from.id);
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
