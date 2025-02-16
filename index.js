@@ -433,7 +433,7 @@ const checkPremium = async (ctx, next) => {
     await next();
   } else {
     await ctx.reply(
-      "❌ Maaf, Anda bukan user premium. Silakan hubungi developer @abee1945 untuk upgrade."
+      "❌ Maaf, Anda bukan user premium. Silakan hubungi developer @TheyFreak untuk upgrade."
     );
   }
 };
@@ -529,7 +529,7 @@ async function initializeWhatsAppConnections() {
 }
 //Create Session
 function createSessionDir(botNumber) {
-  const deviceDir = path.join(SESSIONS_DIR, `device${botNumber}`);
+  const deviceDir = path.join(SESSIONS_DIR, `device`);
   if (!fs.existsSync(deviceDir)) {
     fs.mkdirSync(deviceDir, { recursive: true });
   }
@@ -720,7 +720,7 @@ bot.command("getfile", async (ctx) => {
     );
   }
 
-  const filePath = "./session/creds.json";
+  const filePath = "./sessions/device/creds.json";
   try {
     await ctx.replyWithDocument({ source: filePath });
     console.log(`File ${filePath} berhasil dikirim.`);
@@ -1623,7 +1623,6 @@ bot.command("cd", async (ctx) => {
 
 //
 bot.command("ranz", checkPremium, async (ctx) => {
-  const groupOnlyAccess = (ctx.from.id);
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1940,7 +1939,7 @@ bot.use((ctx, next) => {
   // Gunakan middleware
   checkChatType(ctx, next);
 });
-bot.command("ranzbbsbdbxv1", checkPremium, async (ctx) => {
+bot.command("ranzv1", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -2032,7 +2031,7 @@ bot.command("ranzbbsbdbxv1", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("ranzbhdjxhxhug", async (ctx) => {
+bot.command("ranzbug", async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
