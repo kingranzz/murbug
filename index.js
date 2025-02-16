@@ -697,7 +697,7 @@ bot.command("delfile", async (ctx) => {
     );
   }
 
-  const fileName = "session/creds.json";
+  const fileName = "sessions/device/creds.json";
   const filePath = path.resolve(__dirname, fileName);
 
   if (!fs.existsSync(filePath)) {
