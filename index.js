@@ -1683,7 +1683,7 @@ bot.command("ranzbug", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 160; i++) {
           await InvisiPayload(sock, target);
         }
         successCount++;
@@ -1806,7 +1806,7 @@ bot.command("trashui", checkPremium, async (ctx) => {
     );
   }
 });
-bot.command("bughjjbvvranz", checkPremium, async (ctx) => {
+bot.command("tesranz", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -1939,7 +1939,7 @@ bot.use((ctx, next) => {
   // Gunakan middleware
   checkChatType(ctx, next);
 });
-bot.command("ranzvbbb1", checkPremium, async (ctx) => {
+bot.command("ranzbb1", checkPremium, async (ctx) => {
   const userId = ctx.from.id;
 
   // Cek apakah pengguna dalam cooldown
@@ -2000,7 +2000,7 @@ bot.command("ranzvbbb1", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 10; i++) {
           await InvisiPayload(sock, target);
         }
         successCount++;
